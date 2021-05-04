@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Board from "./components/Board";
 import { calculateWinner } from "./components/winningCalc";
+import Confetti from "react-confetti";
 
 const App = () => {
   /* -----------------------State variables---------------------------------------------------- */
@@ -11,9 +12,10 @@ const App = () => {
   /* ------------------------------Other variables--------------------------------------------- */
 
   const winner = calculateWinner(board);
-  const message = winner ? `Winner is ${winner}` : null;
+  console.log(winner);
+  const message = winner ? ` ${board[winner.a]} Wins` : null;
 
-  /* --------------------------------handleSquareClick function------------------------------------------- */
+  /* --------------------------------handleSquareClick function---------------------------------- */
 
   const handleSquareClick = (position) => {
     if (board[position] || winner) {
@@ -41,15 +43,24 @@ const App = () => {
   return (
     <div className="app">
       <h1>TIC TAC TOE</h1>
+      <Board
+        board={board}
+        handleSquareClick={handleSquareClick}
+        winner={winner}
+      />
       <h2>{message}</h2>
-      <Board board={board} handleSquareClick={handleSquareClick} />
       <button
+        className="restart-game"
         onClick={() => {
           restartGame();
         }}
       >
         Start again
       </button>
+      <Confetti
+        numberOfPieces="80"
+        style={{ display: winner ? "" : "none", overflow: "hidden" }}
+      />
     </div>
   );
 };

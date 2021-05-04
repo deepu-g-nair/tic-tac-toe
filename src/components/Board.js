@@ -2,7 +2,7 @@ import React from "react";
 import Square from "./Square";
 import "../styles/style.scss";
 
-const Board = ({ board, handleSquareClick }) => {
+const Board = ({ board, handleSquareClick, winner }) => {
   const renderSquare = (position) => {
     return (
       <Square
@@ -10,6 +10,8 @@ const Board = ({ board, handleSquareClick }) => {
         onClick={() => {
           handleSquareClick(position);
         }}
+        winner={winner}
+        pos={position}
       />
     );
   };

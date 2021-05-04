@@ -1,6 +1,8 @@
 body {
   padding: 0;
   margin: 0;
+  background-color: rgb(22, 22, 177);
+  user-select: none;
 }
 
 button {
@@ -17,20 +19,37 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: 0.5s;
+  h1 {
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+  }
+  h2 {
+    margin-top: 40px;
+    font-family: monospace;
+  }
+  .restart-game {
+    border: 1px solid white;
+    color: white;
+    padding: 8px;
+    margin-top: 20px;
+  }
 }
 
 .board {
+  margin-top: 20px;
   .board-row {
     display: flex;
     flex-direction: row;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid grey;
+    transition: 0.5s;
     &:last-child {
       border-bottom: none;
     }
     .square {
       width: 80px;
       height: 80px;
-      border-right: 2px solid #000;
+      border-right: 2px solid grey;
       font-size: 2.5rem;
       padding: 0;
       overflow: hidden;
@@ -40,4 +59,7 @@ button {
       }
     }
   }
+}
+
+@media screen and (max-width: 480px) {
 }
